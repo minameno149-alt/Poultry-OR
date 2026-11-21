@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101722">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>Poultry OR | ذكاء وتحليل مزارع التسمين</title>
+<style>
+:root{--bg:#0b111a;--panel:#131d2a;--panel2:#192536;--line:#26364a;--txt:#e9f0f8;--muted:#91a3b8;--green:#39c58a;--blue:#63a7ff;--red:#ff7272;--amber:#f2bd55}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:Tahoma,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--green);color:#062116;font-weight:700}button.secondary{background:var(--panel2);color:var(--txt);border:1px solid var(--line)}button.danger{background:#542b34;color:#ffd9df}input,select,textarea{background:#0d1622;color:var(--txt);border:1px solid var(--line);border-radius:9px;padding:11px;width:100%;outline:none}label{display:block;color:var(--muted);font-size:13px;margin:10px 0 6px}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{background:#101925;border-left:1px solid var(--line);padding:20px 14px;position:sticky;top:0;height:100vh}.brand{font-weight:800;font-size:20px;margin:6px 8px 24px}.brand span{color:var(--green)}.nav button{width:100%;text-align:right;background:transparent;color:var(--muted);margin:3px 0;border:1px solid transparent}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--txt);border-color:var(--line)}.sidefoot{position:absolute;bottom:16px;color:var(--muted);font-size:12px;line-height:1.8;padding:0 8px}.main{padding:24px;max-width:1400px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.top h1{font-size:23px;margin:0 0 6px}.muted{color:var(--muted)}.pill{font-size:12px;color:var(--green);background:#153629;padding:6px 10px;border-radius:30px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px;margin-bottom:14px}.metric{font-size:25px;font-weight:800;margin:9px 0}.metric.green{color:var(--green)}.metric.red{color:var(--red)}.section{display:none}.section.active{display:block}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}.formgrid .wide{grid-column:1/-1}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:600px}th,td{text-align:right;padding:12px 10px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:600}.empty{text-align:center;color:var(--muted);padding:24px}.chatbox{height: min(58vh,570px);overflow:auto;display:flex;flex-direction:column;gap:12px;padding:14px;background:#0e1722;border:1px solid var(--line);border-radius:13px}.bubble{max-width:85%;padding:12px 14px;border-radius:13px;line-height:1.8;white-space:pre-wrap}.user{align-self:flex-start;background:#173c34}.bot{align-self:flex-end;background:#1b2a3d;border:1px solid #2c4058}.chatinput{display:flex;gap:8px;margin-top:10px}.chatinput input{flex:1}.hint{font-size:12px;color:var(--muted);line-height:1.8}.confirm{border:1px solid #4c765f;background:#10251d;padding:13px;border-radius:12px;margin-top:10px}.tag{font-size:11px;padding:4px 8px;border-radius:20px;background:#24354a;color:#b9cbe0}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.small{font-size:12px}.hide{display:none!important}.bar{height:8px;background:#24364a;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green)}@media(max-width:800px){.app{display:block}.side{height:auto;position:relative;padding:12px}.brand{margin:4px 8px 10px}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;width:auto;margin:0}.sidefoot{display:none}.main{padding:15px}.grid{grid-template-columns:repeat(2,1fr)}.top h1{font-size:19px}}@media(max-width:460px){.formgrid{grid-template-columns:1fr}.grid{gap:8px}.card{padding:13px}.metric{font-size:20px}}
+</style></head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand">POULTRY <span>OR</span></div>
+ <div class="nav">
+  <button class="active" data-page="dashboard">◫ الرئيسية</button>
+  <button data-page="cycles">▣ الدورات</button>
+  <button data-page="barns">⌂ العنابر</button>
+  <button data-page="entries">＋ تسجيل العمليات</button>
+  <button data-page="analysis">▤ التحليل المالي و OR</button>
+  <button data-page="chat">✦ الشات الذكي</button>
+  <button data-page="backup">⇧ النسخ الاحتياطي</button>
+ </div>
+ <div class="sidefoot">يعمل محليًا دون إنترنت<br>البيانات محفوظة على هذا الجهاز</div>
+</aside>
+<main class="main">
+<header class="top"><div><h1 id="pageTitle">لوحة التحكم</h1><div class="muted small">إدارة وتحليل دورات تسمين الدواجن</div></div><div class="row" style="flex:0 1 330px"><select id="activeCycle"></select><span class="pill">Offline Ready</span></div></header>
+<section id="dashboard" class="section active">
+ <div class="grid">
+  <div class="card"><div class="muted small">إجمالي المصروفات</div><div class="metric" id="mExpenses">0</div><div class="muted small">جنيه</div></div>
+  <div class="card"><div class="muted small">إيرادات بيع الفراخ</div><div class="metric green" id="mBirdSales">0</div><div class="muted small">جنيه</div></div>
+  <div class="card"><div class="muted small">الإيرادات الثانوية</div><div class="metric" id="mOtherSales">0</div><div class="muted small">جنيه</div></div>
+  <div class="card"><div class="muted small">صافي النتيجة</div><div class="metric" id="mNet">0</div><div class="muted small">إيرادات ناقص مصروفات مسجلة</div></div>
+ </div>
+ <div class="card"><h3>ملخص الدورة النشطة</h3><div id="dashSummary" class="muted">لا توجد بيانات بعد.</div></div>
+ <div class="card"><h3>آخر العمليات</h3><div class="tablewrap" id="recent"></div></div>
+</section>
+<section id="cycles" class="section">
+ <div class="card"><h3>إضافة دورة تسمين</h3><div class="formgrid">
+  <div><label>اسم الدورة</label><input id="cycleName" placeholder="مثال: دورة نوفمبر 2026"></div>
+  <div><label>تاريخ البداية</label><input id="cycleDate" type="date"></div>
+  <div><label>ملاحظات</label><input id="cycleNote" placeholder="اختياري"></div>
+ </div><div class="actions"><button onclick="addCycle()">إضافة الدورة</button></div></div>
+ <div class="card"><h3>الدورات المسجلة</h3><div class="tablewrap" id="cycleTable"></div></div>
+</section>
+<section id="barns" class="section">
+ <div class="card"><h3>إضافة عنبر للدورة النشطة</h3><div class="formgrid">
+  <div><label>اسم العنبر</label><input id="barnName" placeholder="عنبر 1"></div>
+  <div><label>عدد الطيور الحالي</label><input id="birdCount" type="number" min="0" placeholder="5000"></div>
+  <div><label>متوسط الوزن الحالي (جرام)</label><input id="avgWeight" type="number" min="0" placeholder="1200"></div>
+  <div><label>إجمالي العلف المستهلك (كجم)</label><input id="feedKg" type="number" min="0" placeholder="مثال 3500"></div>
+ </div><div class="actions"><button onclick="addBarn()">حفظ العنبر</button></div></div>
+ <div class="card"><h3>عنابر الدورة</h3><div class="tablewrap" id="barnTable"></div></div>
+</section>
+<section id="entries" class="section">
+ <div class="card"><h3>تسجيل عملية جديدة</h3><div class="formgrid">
+  <div><label>نوع العملية</label><select id="entryType"><option value="expense">مصروف</option><option value="bird_sale">بيع فراخ</option><option value="other_sale">إيراد ثانوي</option><option value="feed">علف مستهلك / مشتريات علف</option><option value="mortality">نفوق</option><option value="weight">تحديث وزن</option></select></div>
+  <div><label>التاريخ</label><input id="entryDate" type="date"></div>
+  <div><label>البند / الوصف</label><input id="entryDesc" placeholder="مثال: علف نامي أو أدوية"></div>
+  <div><label>القيمة المالية (جنيه)</label><input id="entryAmount" type="number" min="0" placeholder="0"></div>
+  <div><label>الكمية (كجم أو طائر حسب العملية)</label><input id="entryQty" type="number" min="0" placeholder="اختياري"></div>
+  <div><label>العنبر (إن وجد)</label><select id="entryBarn"><option value="">بدون تحديد</option></select></div>
+  <div class="wide"><label>تفاصيل إضافية</label><textarea id="entryNote" rows="2" placeholder="تفاصيل العملية أو رقم الفاتورة..."></textarea></div>
+ </div><div class="hint">لن تُسجل أي عملية تلقائيًا من الشات؛ راجع البيانات وأكدها أولًا. لا تدخل قيمة مالية تقديرية على أنها فعلية.</div><div class="actions"><button onclick="addEntry()">حفظ العملية</button></div></div>
+ <div class="card"><h3>سجل العمليات</h3><div class="tablewrap" id="entryTable"></div></div>
+</section>
+<section id="analysis" class="section">
+ <div class="grid">
+  <div class="card"><div class="muted small">إجمالي الإيرادات</div><div class="metric" id="aRevenue">0</div></div>
+  <div class="card"><div class="muted small">تكلفة الكيلو المباع</div><div class="metric" id="aCostKg">—</div></div>
+  <div class="card"><div class="muted small">عدد العنابر</div><div class="metric" id="aBarns">0</div></div>
+  <div class="card"><div class="muted small">إجمالي الطيور الحالية</div><div class="metric" id="aBirds">0</div></div>
+ </div>
+ <div class="card"><h3>مقارنة أداء العنابر</h3><div class="hint">المؤشر هنا استرشادي: العلف المسجل ÷ الكتلة الحية الحالية. لا يمثل FCR إنتاجيًا نهائيًا لأنه لا يشمل بدقة أوزان البيع والنافق والمستبعد.</div><div class="tablewrap" id="orTable"></div></div>
+ <div class="card"><h3>تفصيل الإيرادات والمصروفات</h3><div id="financeBreakdown"></div></div>
+ <div class="card"><h3>مقارنة الدورات</h3><div class="tablewrap" id="compareCycles"></div></div>
+</section>
+<section id="chat" class="section">
+ <div class="card">
+  <div class="row"><div><h3 style="margin:0">✦ المساعد الذكي للمزرعة</h3><div class="hint">اكتب تفاصيلك بطريقتك، وسأحاول استخراج العملية أو الإجابة من البيانات المسجلة.</div></div><span class="tag">وضع محلي أساسي</span></div>
+  <div class="chatbox" id="chatbox"><div class="bubble bot">أهلًا بك. اكتب مثلًا:\n«دفعت 2500 جنيه أدوية للعنبر الأول»\n«اشتريت 20 شيكارة علف، الشيكارة 50 كيلو بسعر 850 جنيه»\n«بعت فراخ بمبلغ 120 ألف جنيه»\nأو اسأل: «كام صافي الدورة؟»\n\nملاحظة: التحليل اللغوي المحلي أساسي ويعمل دون إنترنت. المساعد التوليدي الكامل يحتاج ربط خدمة ذكاء اصطناعي ومفتاح API.</div></div>
+  <div id="chatPreview"></div>
+  <div class="chatinput"><input id="chatText" placeholder="اكتب تفاصيل العملية أو سؤالك..." onkeydown="if(event.key==='Enter')sendChat()"><button onclick="sendChat()">إرسال</button></div>
+  <div class="hint">الأوامر المالية لا تُحفظ إلا بعد ضغط «تأكيد التسجيل». لا تشارك بيانات دخول أو معلومات سرية.</div>
+ </div>
+ <div class="card"><h3>ما الذي يستطيع الوضع المحلي فعله؟</h3><div class="muted small">استخراج بعض صيغ المصروفات والمبيعات والعلف والنفوق من النص، وحساب ملخصات الدورة المسجلة. إذا كانت الجملة غير واضحة سيطلب منك استكمالها بدل التخمين.</div></div>
+</section>
+<section id="backup" class="section">
+ <div class="card"><h3>النسخ الاحتياطي واستعادة البيانات</h3><p class="muted small">بياناتك محفوظة داخل المتصفح على نفس الجهاز. صدّر نسخة JSON بانتظام، خصوصًا قبل مسح بيانات المتصفح أو تغيير الهاتف.</p><div class="actions"><button onclick="exportBackup()">تصدير نسخة احتياطية</button><label class="secondary" style="display:inline-flex;align-items:center;padding:10px 14px;border-radius:10px;cursor:pointer"><input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importBackup(event)">استيراد نسخة احتياطية</label></div><p class="hint">الاستيراد يستبدل بيانات Poultry OR المحلية الحالية. احتفظ بنسخة قبل الاستيراد.</p></div>
+ <div class="card"><h3>حالة التخزين</h3><div id="storageStatus" class="muted small">يتم تحميل قاعدة البيانات...</div></div>
+</section>
+</main></div>
+<script>
+const DB='PoultryOR_Standalone_v1';
+let state={cycles:[],activeCycle:null};
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toISOString().slice(0,10);
+$('cycleDate').value=today();$('entryDate').value=today();
+function money(n){return (Number(n)||0).toLocaleString('ar-EG',{maximumFractionDigits:2})+' ج';}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function active(){return state.cycles.find(c=>c.id===state.activeCycle)||null}
+function newId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function save(){localStorage.setItem(DB,JSON.stringify(state));render()}
+function load(){try{let x=JSON.parse(localStorage.getItem(DB)||'null');if(x&&Array.isArray(x.cycles))state=x}catch(e){};if(!state.activeCycle&&state.cycles[0])state.activeCycle=state.cycles[0].id;render();$('storageStatus').textContent='قاعدة البيانات المحلية جاهزة. عدد الدورات: '+state.cycles.length}
+function addCycle(){let name=$('cycleName').value.trim();if(!name)return alert('اكتب اسم الدورة');let c={id:newId(),name,date:$('cycleDate').value||today(),note:$('cycleNote').value,barns:[],entries:[]};state.cycles.push(c);state.activeCycle=c.id;$('cycleName').value='';$('cycleNote').value='';save()}
+function addBarn(){let c=active();if(!c)return alert('أضف دورة أولًا');let name=$('barnName').value.trim();if(!name)return alert('اكتب اسم العنبر');c.barns.push({id:newId(),name,birds:+$('birdCount').value||0,weight:+$('avgWeight').value||0,feed:+$('feedKg').value||0});['barnName','birdCount','avgWeight','feedKg'].forEach(x=>$(x).value='');save()}
+function addEntry(data){let c=active();if(!c)return alert('أضف دورة أولًا');let d=data||{type:$('entryType').value,date:$('entryDate').value||today(),desc:$('entryDesc').value.trim(),amount:+$('entryAmount').value||0,qty:+$('entryQty').value||0,barnId:$('entryBarn').value,note:$('entryNote').value};if(!d.desc)return alert('اكتب وصف العملية');c.entries.push({...d,id:newId()});if(!data)['entryDesc','entryAmount','entryQty','entryNote'].forEach(x=>$(x).value='');save()}
+function totals(c){let e=c.entries||[];let expenses=e.filter(x=>x.type==='expense'||x.type==='feed').reduce((s,x)=>s+(+x.amount||0),0);let birds=e.filter(x=>x.type==='bird_sale').reduce((s,x)=>s+(+x.amount||0),0);let other=e.filter(x=>x.type==='other_sale').reduce((s,x)=>s+(+x.amount||0),0);return{expenses,birds,other,revenue:birds+other,net:birds+other-expenses}}
+function typeName(t){return ({expense:'مصروف',feed:'علف',bird_sale:'بيع فراخ',other_sale:'إيراد ثانوي',mortality:'نفوق',weight:'تحديث وزن'})[t]||t}
+function render(){let c=active();$('activeCycle').innerHTML=state.cycles.map(x=>`<option value="${x.id}" ${x.id===state.activeCycle?'selected':''}>${esc(x.name)}</option>`).join('')||'<option value="">لا توجد دورات</option>';let sel=$('activeCycle');sel.onchange=()=>{state.activeCycle=sel.value;save()};document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.page,b));if(!c){['mExpenses','mBirdSales','mOtherSales','mNet','aRevenue','aCostKg','aBarns','aBirds'].forEach(x=>$(x).textContent='0');$('dashSummary').textContent='أضف دورة جديدة للبدء.';$('recent').innerHTML='<div class="empty">لا توجد بيانات</div>';$('barnTable').innerHTML=$('entryTable').innerHTML=$('orTable').innerHTML=$('financeBreakdown').innerHTML=$('compareCycles').innerHTML='<div class="empty">لا توجد بيانات</div>';return}
+let t=totals(c);$('mExpenses').textContent=money(t.expenses);$('mBirdSales').textContent=money(t.birds);$('mOtherSales').textContent=money(t.other);$('mNet').textContent=money(t.net);$('mNet').className='metric '+(t.net>=0?'green':'red');$('dashSummary').innerHTML=`الدورة: <b>${esc(c.name)}</b> — بدأت في ${esc(c.date)}<br>العنابر: ${c.barns.length} | العمليات المسجلة: ${c.entries.length}<br>صافي النتيجة الحالية: <b>${money(t.net)}</b>`;
+let recent=[...c.entries].slice(-6).reverse();$('recent').innerHTML=table(['التاريخ','النوع','الوصف','القيمة'],recent.map(x=>[x.date,typeName(x.type),x.desc,money(x.amount)]));
+$('cycleTable').innerHTML=table(['اسم الدورة','تاريخ البداية','العنابر','العمليات','إجراء'],state.cycles.map(x=>[esc(x.name),x.date,x.barns.length,x.entries.length,`<button class="secondary small" onclick="setCycle('${x.id}')">فتح</button>`]));
+$('barnTable').innerHTML=table(['العنبر','الطيور الحالية','متوسط الوزن جم','العلف كجم','كتلة حية كجم'],c.barns.map(b=>[esc(b.name),b.birds,b.weight,b.feed,Math.round(b.birds*b.weight/1000)]));
+$('entryBarn').innerHTML='<option value="">بدون تحديد</option>'+c.barns.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join('');
+$('entryTable').innerHTML=table(['التاريخ','النوع','الوصف','القيمة','الكمية','إجراء'],[...c.entries].reverse().map(x=>[x.date,typeName(x.type),esc(x.desc),money(x.amount),x.qty||'—',`<button class="danger small" onclick="delEntry('${x.id}')">حذف</button>`]));
+$('aRevenue').textContent=money(t.revenue);let soldKg=c.entries.filter(x=>x.type==='bird_sale').reduce((s,x)=>s+(+x.qty||0),0);$('aCostKg').textContent=soldKg?money(t.expenses/soldKg):'—';$('aBarns').textContent=c.barns.length;$('aBirds').textContent=c.barns.reduce((s,b)=>s+b.birds,0);
+$('orTable').innerHTML=table(['العنبر','الكتلة الحية كجم','العلف كجم','FCR حي استرشادي'],c.barns.map(b=>{let live=b.birds*b.weight/1000;return[esc(b.name),live.toFixed(1),b.feed,live>0?(b.feed/live).toFixed(2):'—']}))||'<div class="empty">أضف عنابر</div>';
+$('financeBreakdown').innerHTML=`<div class="row"><div>مصروفات مسجلة: <b>${money(t.expenses)}</b></div><div>بيع فراخ: <b>${money(t.birds)}</b></div><div>إيرادات ثانوية: <b>${money(t.other)}</b></div><div>صافي النتيجة: <b>${money(t.net)}</b></div></div><p class="hint">هذه نتيجة نقدية مبسطة بناءً على العمليات المالية التي سجلتها فقط. لا تشمل قيمة مخزون متبقٍ أو مستحقات غير مسجلة، ولا تساوي بالضرورة الربح المحاسبي.</p>`;
+$('compareCycles').innerHTML=table(['الدورة','المصروفات','بيع الفراخ','الإيرادات الثانوية','الصافي'],state.cycles.map(x=>{let z=totals(x);return[esc(x.name),money(z.expenses),money(z.birds),money(z.other),money(z.net)]}));
+}
+function table(head,rows){if(!rows||!rows.length)return '<div class="empty">لا توجد بيانات مسجلة</div>';return '<table><thead><tr>'+head.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')+'</tbody></table>'}
+function show(p,btn){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===p));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('pageTitle').textContent=({dashboard:'لوحة التحكم',cycles:'إدارة الدورات',barns:'العنابر',entries:'تسجيل العمليات',analysis:'التحليل المالي و OR',chat:'الشات الذكي',backup:'النسخ الاحتياطي'})[p]}
+function setCycle(id){state.activeCycle=id;save();show('dashboard')}
+function delEntry(id){let c=active();if(confirm('حذف العملية؟')){c.entries=c.entries.filter(x=>x.id!==id);save()}}
+function exportBackup(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Poultry_OR_Backup_'+today()+'.json';a.click();URL.revokeObjectURL(a.href)}
+function importBackup(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d.cycles))throw 0;if(!confirm('سيتم استبدال بيانات التطبيق الحالية. هل تريد المتابعة؟'))return;state=d;save();alert('تم استيراد النسخة')}catch(e){alert('ملف النسخة الاحتياطية غير صالح')}};r.readAsText(f)}
+function addMsg(txt,who){let d=document.createElement('div');d.className='bubble '+who;d.textContent=txt;$('chatbox').appendChild(d);$('chatbox').scrollTop=$('chatbox').scrollHeight}
+let pending=null;
+function normalize(s){return s.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/٫/g,'.').replace(/٬/g,'').toLowerCase()}
+function extractNumber(s){let m=normalize(s).match(/\d+(?:\.\d+)?/);return m?Number(m[0]):null}
+function sendChat(){let raw=$('chatText').value.trim();if(!raw)return;$('chatText').value='';addMsg(raw,'user');let s=normalize(raw),c=active();if(!c){addMsg('لا توجد دورة نشطة. أضف دورة أولًا ثم أرسل التفاصيل.','bot');return}
+if(/صافي|ربح|خسار|مصروفات|اجمالي|إجمالي|إيراد|مبيعات/.test(raw)){let t=totals(c);addMsg(`ملخص ${c.name} من البيانات المسجلة:\nالمصروفات: ${money(t.expenses)}\nبيع الفراخ: ${money(t.birds)}\nالإيرادات الثانوية: ${money(t.other)}\nصافي النتيجة: ${money(t.net)}\n\nهذا الملخص لا يشمل أي بيانات لم تسجلها.`,'bot');return}
+let type=null,amount=null,qty=null,desc=raw;
+if(/بعت|بيع|مبيعات/.test(s)&&/فراخ|دجاج|طيور/.test(s))type='bird_sale';
+else if(/بعت|بيع|ايراد|إيراد/.test(s)&&/سبلة|شكاير|خردة|فرز/.test(s))type='other_sale';
+else if(/علف|شيكارة|شكارة/.test(s))type='feed';
+else if(/نفوق|نافق|مات/.test(s))type='mortality';
+else if(/دفعت|مصروف|اشتريت|شراء|تكلفة/.test(s))type='expense';
+if(type){let nums=[...s.matchAll(/\d+(?:\.\d+)?/g)].map(m=>Number(m[0]));amount=nums.length?nums[nums.length-1]:null;qty=null;
+if(type==='feed'){let bags=nums.length>=2?nums[0]:null;let kgPer=50;let price=nums.length>=2?nums[nums.length-1]:null;let totalKg=bags?bags*kgPer:null;let totalCost=bags&&price?bags*price:null;pending={type:'feed',desc:raw,amount:totalCost||0,qty:totalKg||0,date:today(),barnId:'',note:'استخرجها الشات محليًا؛ راجع عدد الشكاير وسعر الشيكارة ووزنها قبل التأكيد.'};$('chatPreview').innerHTML=`<div class="confirm"><b>مراجعة قبل التسجيل</b><p>${esc(raw)}</p><div class="hint">افتراض مبدئي: وزن الشيكارة 50 كجم. الكمية: ${totalKg??'غير محددة'} كجم. التكلفة: ${totalCost?money(totalCost):'غير محددة'}.</div><label>إجمالي التكلفة بالجنيه</label><input id="pAmount" type="number" value="${totalCost||''}"><label>إجمالي الكمية كجم</label><input id="pQty" type="number" value="${totalKg||''}"><div class="actions"><button onclick="confirmChat()">تأكيد التسجيل</button><button class="secondary" onclick="cancelChat()">إلغاء</button></div></div>`;addMsg('استخرجت عملية علف، لكن يلزم مراجعة سعر الشيكارة وعددها. لن أحفظها قبل تأكيدك.','bot');return}
+pending={type,desc,amount:amount||0,qty:0,date:today(),barnId:'',note:'تم اقتراح العملية من الشات؛ راجع القيمة قبل الحفظ.'};
+$('chatPreview').innerHTML=`<div class="confirm"><b>مراجعة قبل التسجيل</b><p>${esc(raw)}</p><label>القيمة بالجنيه</label><input id="pAmount" type="number" value="${amount||''}"><label>الكمية إن وجدت</label><input id="pQty" type="number" value=""><div class="actions"><button onclick="confirmChat()">تأكيد التسجيل</button><button class="secondary" onclick="cancelChat()">إلغاء</button></div></div>`;addMsg('وجدت وصفًا قد يكون عملية مالية. راجع المبلغ ونوع العملية ثم أكد التسجيل.','bot');return}
+addMsg('لم أتمكن من تحديد نوع العملية بثقة. اكتبها مثل: «دفعت 1500 جنيه أدوية»، أو «بعت فراخ بمبلغ 50000 جنيه»، أو سجلها من صفحة العمليات. أستطيع الإجابة عن ملخص الأرقام المسجلة، لكن هذا الوضع المحلي ليس نموذج ذكاء اصطناعي كاملًا.','bot')}
+function confirmChat(){if(!pending)return;pending.amount=Number($('pAmount')?.value)||0;pending.qty=Number($('pQty')?.value)||0;if(!pending.amount&&pending.type!=='mortality'){alert('أدخل القيمة المالية قبل التسجيل، أو سجل العملية من صفحة العمليات إذا كانت غير مالية.');return}let c=active();c.entries.push({...pending,id:newId()});pending=null;$('chatPreview').innerHTML='';save();addMsg('تم تسجيل العملية في الدورة النشطة. يمكنك مراجعتها من سجل العمليات.','bot')}
+function cancelChat(){pending=null;$('chatPreview').innerHTML='';addMsg('تم إلغاء التسجيل ولم يتم حفظ أي بيانات.','bot')}
+load();
+</script><script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(err => console.warn("SW registration failed", err));
+  });
+}
+</script>
+</body></html>
